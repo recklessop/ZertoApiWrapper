@@ -32,7 +32,7 @@ function Get-ZertoFlrSession{
 
             # If one or more flrIdentifiers are supplied, run a foreach loop to get them all
             "flrId" {
-                $returnObject = foreach ( $id in $eventId ) {
+                $returnObject = foreach ( $id in $flrSessionIdentifier ) {
                     $uri = "{0}/{1}" -f $baseUri, $id
                     Invoke-ZertoRestRequest -uri $uri
                 }
