@@ -8,12 +8,12 @@ function Get-ZertoFlrSession{
         )]
         [string]$vmIdentifier,
         [Parameter(
-            ParameterSetName = "flrId",
+            ParameterSetName = "flrSessionId",
             Mandatory = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The identifier or identifiers of the event for which information is returned.")]
-        [string[]]$flrSessionIdentifier
+        [string[]]$flrSessionId
     )
 
     begin {
@@ -31,8 +31,8 @@ function Get-ZertoFlrSession{
             }
 
             # If one or more flrIdentifiers are supplied, run a foreach loop to get them all
-            "flrId" {
-                $returnObject = foreach ( $id in $flrSessionIdentifier ) {
+            "flrSessionId" {
+                $returnObject = foreach ( $id in $flrSessionId ) {
                     $uri = "{0}/{1}" -f $baseUri, $id
                     Invoke-ZertoRestRequest -uri $uri
                 }
