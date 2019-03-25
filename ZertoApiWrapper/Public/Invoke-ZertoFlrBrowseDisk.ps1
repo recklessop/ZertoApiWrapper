@@ -22,7 +22,6 @@ function Invoke-ZertoFlrBrowseDisk {
     begin {
         $baseUri = "flrs"
         $path = "$fsPath $fsType"
-        write-host $path
         $body = @{"Path" = $path}
     }
 
